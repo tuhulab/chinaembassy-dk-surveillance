@@ -9,10 +9,11 @@ library(purrr)
 
 extract_content <- function(url = ...){
   content <- url %>% xml2::read_html() %>% 
-    rvest::html_nodes(css ="p") %>% rvest::html_text() %>% str_remove_all(BLANK) %>% 
+    rvest::html_nodes(css ="p") %>% rvest::html_text() %>% 
     str_subset("") %>% str_c(collapse = TRUE)
   return(content)
 }
+
 html <- xml2::read_html("https://www.fmprc.gov.cn/ce/cedk/eng/zdgx/")
 
 page <- tibble(Title = rvest::html_nodes(html, css = ".newsList a") %>% rvest::html_text() %>% 
@@ -28,7 +29,7 @@ content <- page$url %>% map_chr(extract_content)
 
 page_content_preview <- 
   page %>% 
-  mutate(Content_preview = paste0("[",content %>% str_remove_all("TRUE") %>% str_sub(1, 120), " ... (Read More)]","(", url,")")) %>% 
+  mutate(Content_preview = paste0("[",content %>% str_remove_all("TRUE") %>% str_sub(1, 300), " ... (Read More)]","(", url,")")) %>% 
   select(-url)
 
 header_1 <- 
@@ -40,6 +41,6 @@ header_2 <-
 table <- knitr::kable(page_content_preview , format = "pipe")
 
 output <- c(header_1, header_2, table)
-write(output, "README.md")
+write(output, "EN/README.md")
 
 
