@@ -35,7 +35,7 @@ header_1 <-
   paste("## The Table was Updated at", Sys.time(), "(Copenhagen Time) \n ")
 
 header_2 <- 
-  paste0("## The Last Update from the Embassy was on ", page$Time[1], "\n")
+  paste0("## The Latest Update from the Embassy was on ", page$Time[1], "\n")
 
 table <- knitr::kable(page_content_preview , format = "pipe")
 
