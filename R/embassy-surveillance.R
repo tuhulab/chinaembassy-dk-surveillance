@@ -28,7 +28,16 @@ page_content_preview <-
   page %>% 
   mutate(Content_preview = paste0("[",content %>% str_remove_all("TRUE") %>% str_sub(1, 120), " ... (Read More)]","(", url,")")) %>% 
   select(-url)
-test <- knitr::kable(page_content_preview , format = "pipe")
-write(test, "README.md")
+
+header_1 <- 
+  paste("## The Table was Updated at", Sys.time(), "(Copenhagen Time) \n ")
+
+header_2 <- 
+  paste0("## The Last Update from the Embassy was on ", page$Time[1], "\n")
+
+table <- knitr::kable(page_content_preview , format = "pipe")
+
+output <- c(header_1, header_2, table)
+write(output, "README.md")
 
 
