@@ -1,4 +1,6 @@
-# China Embassy in DK --------------------
+#!/usr/bin/env Rscript
+
+# Surveillance for chinaembassy_dot_dk
 library(dplyr)
 library(stringr)
 library(ggplot2)
