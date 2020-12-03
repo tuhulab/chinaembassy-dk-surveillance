@@ -1,4 +1,4 @@
-## The Table was Updated at 2020-12-02 19:04:13 (Copenhagen Time) 
+## The Table was Updated at 2020-12-03 08:07:23 (Copenhagen Time) 
  
 ## The Latest Update from the Embassy was on 2020-11-29
 
